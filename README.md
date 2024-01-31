@@ -1,2 +1,2 @@
 # WebAcademy
-Repositorio para avaliação do curso.
+Repositorio para avaliaçôes do curso.
