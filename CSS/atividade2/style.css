@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("img/nebulosa.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+section{
+    position: relative;
+    width: 10%;
+    max-height: 80%;
+    left: 5%;
+    top: 5%;
+    border: 7px solid orange;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+h3{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    margin: 20px 0px;
+    color: white;
+}
+
+p{
+    margin: 20px 0px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    color: white;
+}
