@@ -1,0 +1,35 @@
+/* Use posicionamento relativo para posicionar os blocos conforme a imagem resultado_final.png. */
+
+div.blue {
+  position: absolute;
+  width: 100px;
+  height: 200px;
+  background-color: blue;
+}
+
+div.yellow {
+  position: relative;
+  right: 100px;
+  left: 100px;
+  width: 100px;
+  height: 150px;
+  background-color: yellow;
+}
+
+div.red {
+  position:relative;
+  top: -150px;
+  left: 200px;
+  width: 100px;
+  height: 150px;
+  background-color: red;
+}
+
+div.green {
+  position: relative;
+  left: 100px;
+  top: -150px;
+  width: 200px;
+  height: 50px;
+  background-color: green;
+}
