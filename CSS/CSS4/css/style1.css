@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    border: 0;
+}
+
+.container {
+    display: grid;
+    gap: 8px;
+    grid-template-areas: "ared ablue";
+}
+
+
+.container div:nth-child(1) {
+    grid-area: ared;
+    background-color: red;
+}
+
+.container div:nth-child(2) {
+    grid-area: ablue;
+    background-color: blue;
+}
+
+.container div:nth-child(3) {
+    grid-area: a-green;
+    background-color: green;
+}
+
+.container div:nth-child(4) {
+    grid-area: a-pink;
+    background-color: palevioletred;
+}
+
+.container div:nth-child(5) {
+    grid-area: a-orang;
+    background-color: orange;
+}
