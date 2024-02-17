@@ -1,22 +1,28 @@
 * {
-    margin: 0;
-    border: 0;
+    box-sizing: border-box;
 }
 
 .container {
     display: grid;
+    width: calc(100vw - 16px);
+    height: calc(100vh - 16px);
     gap: 8px;
-    grid-template-areas: "ared ablue";
+    grid-template-columns:  repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "a-red a-red a-blue a-blue"
+    "a-green a-pink a-pink a-pink"
+    "a-orang a-orang a-orang a-orang";
 }
 
 
 .container div:nth-child(1) {
-    grid-area: ared;
+    grid-area: a-red;
     background-color: red;
 }
 
 .container div:nth-child(2) {
-    grid-area: ablue;
+    grid-area: a-blue;
     background-color: blue;
 }
 
@@ -33,4 +39,8 @@
 .container div:nth-child(5) {
     grid-area: a-orang;
     background-color: orange;
+}
+
+.container * {
+    border-radius: 20px;
 }
