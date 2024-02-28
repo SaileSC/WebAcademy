@@ -11,7 +11,7 @@ html{
 
 body {
     width: 100vw;
-    max-width: 1920px;
+    max-width: 1620px;
     height: 100vh;
     display: grid;
     grid-template-rows: 1fr 4fr 2fr;
@@ -112,7 +112,6 @@ section:nth-child(2) .options {
     background-color: azure;
     grid-template-areas:
         "btn1 robo btn3";
-    box-shadow: 0;
 }
 
 
@@ -128,13 +127,11 @@ section:nth-child(2) .options {
 
 main > section {
     display: grid;
+    grid-template-rows: 1fr 1fr 4fr;
     grid-template-areas:
-        "titulo" "titulo" "titulo"
-        "parag" "parag" "parag"
-        "options" "options" "options"
-        "options" "options" "options"
-        "options" "options" "options"
-        "options" "options" "options";
+        "titulo"
+        "parag" 
+        "options";
     gap: 8px;
 }
 
@@ -179,8 +176,40 @@ footer> p {
     background-color: grey;
 }
 
-
-
 .selected {
     border: solid 2px rgb(12, 155, 22) !important;
 }
+
+
+@media only screen and (max-width: 700px){
+    body {
+        background-color: wheat;
+        grid-template-rows: 1fr 10fr 1fr;
+        grid-template-areas:
+            "head head head head"
+            "players players players players"
+            "foot foot foot foot";
+    }
+
+    main {
+        grid-template-areas: 
+        "player2" 
+        "player1";
+    }
+
+    main > section {
+        grid-template-rows: 0.5fr 0.5fr 3fr;
+        grid-template-areas:
+            "titulo"
+            "parag" 
+            "options";
+    }
+
+    p{
+        font-size: 16px;
+    }
+    
+    h4 * {
+        font-size: 16px;
+    }
+}   
