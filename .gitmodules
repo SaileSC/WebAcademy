@@ -1,6 +1,3 @@
 [submodule "JavaScript/Jokenpo"]
 	path = JavaScript/Jokenpo
 	url = https://github.com/SaileSC/Jokenpo.git
-[submodule "JavaScript/Laboratorio-3"]
-	path = JavaScript/Laboratorio-3
-	url = https://github.com/SaileSC/WebAcademy-bolas-saltitantes.git
