@@ -1,0 +1,59 @@
+<body>
+  <h1>To-do</h1>
+
+  <div>
+    <p id="lista-titulo" name="lista">Lista de atividades:</p>
+  </div>
+
+  <div>
+    <input placeholder="Digite aqui o item" />
+    <button>Adicionar</button>
+  </div>
+
+  <ul id="lista-itens">
+    <li>item a</li>
+  </ul>
+
+  <div>
+    <button>Remover último item</button>
+  </div>
+</body>
+
+<script>
+  // Lista 2
+  // Questao 5
+  const addActivitie = () => {
+    let inputValue = document.querySelector("input").value;
+    let list = document.querySelector("#lista-itens");
+
+    if(inputValue){
+      let textNo = document.createTextNode(inputValue);
+      let newNo = document.createElement("li");
+
+      newNo.appendChild(textNo);
+      list.append(newNo);
+    }else{
+      alert("Input Vazio, nada adicionado a lista");
+    }
+  }
+
+  const removeActivitie = () => {
+    let list = document.querySelector("#lista-itens");
+    if(list.childElementCount){
+      list.removeChild(list.lastElementChild);
+    }else{
+      console.log("Lista Vazia");
+    }
+  }
+
+
+  const buttons = document.querySelectorAll("button");
+
+  buttons.forEach((element) => {
+    if(element.textContent == "Adicionar"){
+      element.addEventListener("click", addActivitie);
+    }else if(element.textContent == "Remover último item"){
+      element.addEventListener("click", removeActivitie);
+    }
+  });
+</script>
