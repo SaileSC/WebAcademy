@@ -1,0 +1,37 @@
+
+html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #682108;
+}
+
+body {
+    font-family: helvetica, sans-serif;
+    width: 350px;
+    border: dotted black 2px;
+    padding: 28px;
+    background-color: antiquewhite;
+    margin-top: 32px;
+}
+
+label {
+    font-weight: bold;
+}
+
+div {
+    padding-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    width: 150px;
+}
+
+p {
+    text-align: justify;
+    background: #ffc125;
+    color: #5e2612;
+    padding: 20px;
+    visibility: hidden;
+}
