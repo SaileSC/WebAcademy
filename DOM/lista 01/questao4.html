@@ -1,0 +1,56 @@
+<body>
+  <h1>Várias listas</h1>
+
+  <p id="lista-titulo" name="lista">Lista de itens:</p>
+
+  <ul class="lista-itens-1">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+
+  <ul class="lista-itens-2">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+
+  <ul class="lista-itens-3">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+
+  <ul class="lista-itens-4">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+</body>
+
+<script>
+  // Questão 4
+  // a)
+  const itensLista2 = document.querySelectorAll(".lista-itens-2 > *");
+
+  console.log("Itens da lista-itens-2");
+  itensLista2.forEach((element) => {
+    console.log(element);
+  });
+
+  // b)
+  const itensClassHot = document.querySelectorAll(".lista-itens-2 > .hot");
+
+  console.log("Itens da lista-itens-2 com a classe hot");
+  itensClassHot.forEach((element) => {
+    console.log(element);
+  });
+
+
+
+
+</script>
