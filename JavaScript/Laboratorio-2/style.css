@@ -1,0 +1,79 @@
+html{
+  background-color: wheat;
+}
+
+h1{
+  display: flex;
+  grid-area: title;
+  justify-content: center;
+  border: dotted rgb(88, 60, 141);
+  border-width: 0 0 4px 0;
+}
+
+body {
+  display: grid;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  grid-template-areas: 
+    "title" "fullImage" "thumb";
+}
+
+.full-img {
+  grid-area: fullImage;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  margin: 8px;
+  padding: 8px;
+  border: dotted rgb(88, 60, 141);
+  border-width: 0 0 4px 0;
+}
+
+.displayed-img {
+  position: relative;
+  z-index: 0;
+  width: 60%;
+  height: 500px;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 20%;
+  background-color: rgba(0,0,0,0);
+  width: 60%;
+  height: 515px;
+}
+
+.thumb-bar img {
+  width: 10%;
+  height: 100px;
+  cursor: pointer;
+}
+
+.thumb-bar {
+  grid-area: thumb;
+  display: flex;
+  flex-direction: row;
+  width: 100%; 
+  justify-content: center;
+  align-items: center;
+}
+
+
+button {
+  border: 0;
+  background: rgba(150,150,150,0.6);
+  text-shadow: 1px 1px 1px white;
+  border: 1px solid #999;
+  position: absolute;
+  cursor: pointer;
+  top: 2px;
+  left: 2px;
+}
+
+
