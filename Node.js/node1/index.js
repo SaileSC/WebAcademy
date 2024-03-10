@@ -1,5 +1,8 @@
 const http = require("http");
 const fs = require("fs");
+require("dotenv").config();
+
+const PORT = process.env.PORT;
 
 const filesNames = [];
 
@@ -22,7 +25,7 @@ const server = http.createServer((req, res) => {
 })
 
 
-const PORT = 5555;
+
 server.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 })
