@@ -1,19 +1,20 @@
 {
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "is-prime-number": "^2.1.0"
   },
   "name": "node1",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "commonjs",
   "devDependencies": {
     "cross-env": "^7.0.3",
     "nodemon": "^3.1.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development nodemon index.js",
-    "start:prod": "cross-env NODE_ENV=production node index.js"
-  }
-  ,
+    "start": "cross-env NODE_ENV=development nodemon src/index.js",
+    "start:prod": "cross-env NODE_ENV=production node src/index.js"
+  },
   "author": "Saile Santos da Costa",
   "license": "ISC",
   "description": ""
