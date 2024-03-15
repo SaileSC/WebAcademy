@@ -47,7 +47,7 @@ fs.readdir("./public", (err, files) => {
         });
 
 
-        //Define porta de acordo com o .env.
+        //Define porta de acordo com o .env.xxxx.PORT
         server.listen(PORT, () => {
             console.log(`Servidor rodando na porta ${PORT}`);
         });
