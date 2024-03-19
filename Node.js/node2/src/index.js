@@ -26,24 +26,31 @@ fs.readdir("./public", (err, files) => {
 
         //Cria servidor
         const server = http.createServer((req, res) => {
-            res.writeHead(200, { "Content-Type": "text/html;charset=utf-8" });
-
             if (req.url == "/") {
+                res.writeHead(200, { "Content-Type": "text/html;charset=utf-8" });
                 filesNames.forEach((element) => {
-                    //res.write(creaeLink(element));
-                    res.write(`${stringUtil.toUpper(element)} <br>`);
+                    res.write(creaeLink(element));
+                    //res.write(`${stringUtil.toUpper(element)} <br>`);
                 });
+                res.end();
             } else if (req.url.includes("favicon.ico")) {
                 res.end();
             } else {
-                fs.readFile("./public", (err, data) => {
-                    if (err) throw Error(err)
-                    res.end(data.toString());
-                })
-            }
-
-
-            res.end();
+                    const filePath = `./public${req.url}`;
+                    fs.readFile(filePath, (err, data) => {
+                        if (err) {
+                            res.writeHead(404, { "Content-Type": "text/html;charset=utf-8" });
+                            res.write("<h1>Arquivo não encontrado</h1>");
+                            res.end();
+                            return;
+                        }else{
+                            res.writeHead(200, { "Content-Type": "text/html;charset=utf-8" });
+                            res.write(`<pre>${stringUtil.toUpper(data.toString())}</pre>`);
+                            res.write('<button onclick="history.back()">Voltar</button>');
+                            res.end();
+                        }
+                    });
+                }
         });
 
 
