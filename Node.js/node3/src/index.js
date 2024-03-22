@@ -4,22 +4,17 @@ import dotenv from "dotenv";
 import url from "url";
 import { LoremIpsum } from "lorem-ipsum";
 
-//import loremUtil from "./utils/lorem.js"
-
-//const LoremIpsum = require("lorem-ipsum").LoremIpsum;
-
 //Configura o ambiente como produção ou desenvolvimento;
 dotenv.config({
     path: `.env.${process.env.NODE_ENV}`
 });
-
 const PORT = process.env.PORT;
 
 //Cria servidor
 const server = http.createServer((req, res) => {
     const parsedUrl = url.parse(req.url, true);
-    const filePath = './src/html/index.html';
     if (parsedUrl.pathname == "/") {
+        let filePath = './src/static/html/index.html';
         fs.readFile(filePath, "utf8", (err, data) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -36,23 +31,27 @@ const server = http.createServer((req, res) => {
                     }
                     let newData = data;
                     newData = newData.replace("...", paragraps);
-
                     res.end(newData);
                 } else {
                     res.end(data);
                 }
             }
         });
-
-
-
-
+    } else if (parsedUrl.pathname == "/css/styles.css") { // Mova esta condição para fora do bloco `if (parsedUrl.pathname == "/")`
+        let filePath = './src/static/css/styles.css';
+        fs.readFile(filePath, (err, data) => {
+            if (err) {
+                res.writeHead(500);
+                return res.end('Erro interno do servidor');
+            }
+            res.writeHead(200, {'Content-Type': 'text/css'});
+            res.end(data);
+        });
     } else {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('Página não encontrada');
     }
 });
-
 
 //Define porta de acordo com o .env.xxxx.PORT
 server.listen(PORT, () => {
