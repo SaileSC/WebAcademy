@@ -10,15 +10,17 @@ dotenv.config({
 });
 const PORT = process.env.PORT;
 
+
 //Cria servidor
 const server = http.createServer(async (req, res) => {
     const parsedUrl = url.parse(req.url, true);
     if (parsedUrl.pathname == "/") {
         let filePath = './src/static/html/index.html';
         try {
+            //fornece html
             const data = await fs.promises.readFile(filePath, "utf8");
             res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
-            const qtdParagrafo = parsedUrl.query.qtdParagrafo || 0; //Armazena quantidade de paragrafos;
+            const qtdParagrafo = parsedUrl.query.qtdParagrafo || 0;
 
             if (qtdParagrafo) {
                 let lorem = new LoremIpsum();
@@ -35,9 +37,10 @@ const server = http.createServer(async (req, res) => {
             res.writeHead(500, { 'Content-Type': 'text/plain' });
             res.end(err.message);
         }
-    } else if (parsedUrl.pathname == "/css/styles.css") { // Mova esta condição para fora do bloco `if (parsedUrl.pathname == "/")`
+    } else if (parsedUrl.pathname == "/css/styles.css") { 
         let filePath = './src/static/css/styles.css';
         try {
+            //fornece css
             const data = await fs.promises.readFile(filePath, "utf8");
             res.writeHead(200, {'Content-Type': 'text/css'});
             res.end(data);
