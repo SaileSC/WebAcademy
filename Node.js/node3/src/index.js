@@ -11,42 +11,40 @@ dotenv.config({
 const PORT = process.env.PORT;
 
 //Cria servidor
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
     const parsedUrl = url.parse(req.url, true);
     if (parsedUrl.pathname == "/") {
         let filePath = './src/static/html/index.html';
-        fs.readFile(filePath, "utf8", (err, data) => {
-            if (err) {
-                res.writeHead(500, { 'Content-Type': 'text/plain' });
-                res.end(err.message);
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
-                const qtdParagrafo = parsedUrl.query.qtdParagrafo || 0; //Armazena quantidade de paragrafos;
+        try {
+            const data = await fs.promises.readFile(filePath, "utf8");
+            res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
+            const qtdParagrafo = parsedUrl.query.qtdParagrafo || 0; //Armazena quantidade de paragrafos;
 
-                if (qtdParagrafo) {
-                    let lorem = new LoremIpsum();
-                    let paragraps = "";
-                    for (let x = 1; x <= qtdParagrafo; x++) {
-                        paragraps += `<p>${lorem.generateParagraphs(1)}</p>`
-                    }
-                    let newData = data;
-                    newData = newData.replace("...", paragraps);
-                    res.end(newData);
-                } else {
-                    res.end(data);
+            if (qtdParagrafo) {
+                let lorem = new LoremIpsum();
+                let paragraps = "";
+                for (let x = 1; x <= qtdParagrafo; x++) {
+                    paragraps += `<p>${lorem.generateParagraphs(1)}</p>`
                 }
+                let newData = data.replace("...", paragraps);
+                res.end(newData);
+            } else {
+                res.end(data);
             }
-        });
+        } catch (err) {
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end(err.message);
+        }
     } else if (parsedUrl.pathname == "/css/styles.css") { // Mova esta condição para fora do bloco `if (parsedUrl.pathname == "/")`
         let filePath = './src/static/css/styles.css';
-        fs.readFile(filePath, (err, data) => {
-            if (err) {
-                res.writeHead(500);
-                return res.end('Erro interno do servidor');
-            }
+        try {
+            const data = await fs.promises.readFile(filePath, "utf8");
             res.writeHead(200, {'Content-Type': 'text/css'});
             res.end(data);
-        });
+        } catch (err) {
+            res.writeHead(500);
+            res.end('Erro interno do servidor');
+        }
     } else {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('Página não encontrada');
