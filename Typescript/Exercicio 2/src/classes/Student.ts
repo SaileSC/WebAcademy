@@ -1,11 +1,16 @@
 export class Student{
+
+    static StudentId = 1;
+    private _id: number = Student.StudentId
+
     constructor(
-        private _id: number,
         private _completeName: string,
         private _age: number,
         private _height: number,
-        private _weight: number
-    ){}
+        private _weight: number,
+    ){
+        Student.StudentId += 1;
+    }
 
 
     public get weight(): number {
@@ -34,8 +39,5 @@ export class Student{
     }
     public get id(): number {
         return this._id;
-    }
-    public set id(value: number) {
-        this._id = value;
     }
 }

@@ -4,8 +4,8 @@ export class Class{
     static classId:number = 1;
 
     constructor(
+        private _name: string,
         private _id: number = Class.classId,
-        private _name: string = "",
         private _stundentList: Student[] = [],
     ){
         Class.classId += 1;
@@ -27,28 +27,27 @@ export class Class{
         return [...this._stundentList];
     }
 
-
     public getNumStudents = ():number => this._stundentList.length;
     
     public getEvarageAges = ():number => {
         let studentsCount =  this.getNumStudents()
         let sumAges = this._stundentList.reduce((sum, student) => sum + student.age, 0)
 
-        return studentsCount / sumAges
+        return sumAges / studentsCount 
     };
 
     public getEvarageHeight = ():number => {
         let studentsCount =  this.getNumStudents()
         let sumHeight = this._stundentList.reduce((sum, student) => sum + student.height, 0)
 
-        return studentsCount / sumHeight
+        return  sumHeight / studentsCount
     };
 
     public getEvarageWeights = ():number => {
         let studentsCount =  this.getNumStudents()
         let sumWeights = this._stundentList.reduce((sum, student) => sum + student.weight, 0)
 
-        return studentsCount / sumWeights
+        return sumWeights / studentsCount 
     };
 
     public insertStudent = (student: Student):void => {
@@ -56,7 +55,7 @@ export class Class{
     }
 
     public updateStundent = (studentUpdate: Student):void => {
-        const studentToUpdate = this._stundentList.find(stundent => studentUpdate.id === studentUpdate.id)
+        const studentToUpdate = this._stundentList.find(stundent => stundent.id === studentUpdate.id)
 
         if (studentToUpdate) {
             Object.assign(studentToUpdate, studentUpdate);
@@ -67,6 +66,16 @@ export class Class{
         const indexStudent = this._stundentList.findIndex(student => student.id === studentId);
         if (indexStudent !== -1) {
             this._stundentList.splice(indexStudent, 1);
+        }
+    }
+
+
+    public getStudent = (studentId: number):Student => {
+        const student = this._stundentList.find(stundent => stundent.id == studentId)
+        if(student){
+            return student
+        }else{
+            throw Error("Student not find in list");
         }
     }
 }

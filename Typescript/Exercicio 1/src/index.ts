@@ -32,9 +32,8 @@ class ToDoList{
             if(todo.getId() == id){
                 findToDo = todo;
             }
-
         })
-
+        
         return findToDo;
     }
 
@@ -50,7 +49,6 @@ class ToDoList{
         }
     }
 }
-
 
 const rowFormatAppend = (todo:ToDo):void =>{
     let newTr = document.createElement("tr");
@@ -85,9 +83,6 @@ const setCurrentDate = () =>{
     `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}-${date.getHours()}:${date.getMinutes()}`
 }
 
-
-
-
 const newTodo = ():void => {
     const inputs = document.querySelectorAll<HTMLInputElement>("tr input");
     let values: string[] = [];
@@ -97,8 +92,6 @@ const newTodo = ():void => {
             values.push(input.value);
         } 
     })
-
-
     
     let date = new Date();
     let noToDo:ToDo = new ToDo(
@@ -112,8 +105,6 @@ const newTodo = ():void => {
     rowFormatAppend(noToDo);
 }
 
-
-
 const removeToDo = (event:Event):void =>{
     const button = event.target as HTMLElement;
     const tr = button.closest("tr");
@@ -122,9 +113,6 @@ const removeToDo = (event:Event):void =>{
         tr.remove();
         listToDo.deleteToDO(parseInt(tr.id));
     }
-
-    
-    
 }
 
 const configButtons = ():void =>{

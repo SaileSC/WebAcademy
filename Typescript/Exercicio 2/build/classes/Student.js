@@ -1,10 +1,11 @@
 export class Student {
-    constructor(_id, _completeName, _age, _height, _weight) {
-        this._id = _id;
+    constructor(_completeName, _age, _height, _weight) {
         this._completeName = _completeName;
         this._age = _age;
         this._height = _height;
         this._weight = _weight;
+        this._id = Student.StudentId;
+        Student.StudentId += 1;
     }
     get weight() {
         return this._weight;
@@ -33,7 +34,5 @@ export class Student {
     get id() {
         return this._id;
     }
-    set id(value) {
-        this._id = value;
-    }
 }
+Student.StudentId = 1;

@@ -99,10 +99,7 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "src/**/*", "package.json"
-  ],
-  "exclude": [
-    "node_modules"
+    "src/**/*",
   ],
   "tsc-alias": {
     "resolveFullPaths": true,
