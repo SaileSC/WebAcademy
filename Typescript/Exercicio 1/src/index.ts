@@ -168,11 +168,11 @@ const loadModal = (event:Event):void =>{
 
 const updateTodoinModal = (event:Event):void =>{
     const inputs = document.querySelectorAll<HTMLInputElement>(".modal-body input");
-        let todo = listToDo.getToDO(parseInt(inputs[3].value))
+    let todo = listToDo.getToDO(parseInt(inputs[3].value))
 
-        todo.setTitle(inputs[0].value);
-        todo.setLimiteDate(inputs[1].value);
-        todo.setDescription(inputs[2].value);
+    todo.setTitle(inputs[0].value);
+    todo.setLimiteDate(inputs[1].value);
+    todo.setDescription(inputs[2].value);
 }
 
 
