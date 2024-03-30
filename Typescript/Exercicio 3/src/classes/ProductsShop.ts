@@ -42,7 +42,7 @@ export class ProductsShop {
         if(indexProduct != -1){
             return this._productList[indexProduct]
         }else{
-            return new Product();
+            throw Error("Product not find");
         }
     }
 }

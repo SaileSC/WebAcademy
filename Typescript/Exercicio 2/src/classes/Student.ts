@@ -12,7 +12,6 @@ export class Student{
         Student.StudentId += 1;
     }
 
-
     public get weight(): number {
         return this._weight;
     }
