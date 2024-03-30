@@ -13,9 +13,9 @@ const loadClassData = (schoolroom:Class):Function => {
                 if(span.id == "numAlunos"){
                     span.firstChild!.nodeValue = schoolroom.getNumStudents().toString()
                 }else if(span.id == "mediaIdades"){
-                    span.firstChild!.nodeValue = schoolroom.getEvarageAges().toFixed(2).toString()
+                    span.firstChild!.nodeValue = schoolroom.getEvarageAges().toFixed(0).toString()
                 }else if(span.id == "mediaAlturas"){
-                    span.firstChild!.nodeValue = schoolroom.getEvarageHeight().toString()
+                    span.firstChild!.nodeValue = schoolroom.getEvarageHeight().toFixed(2).toString()
                 }else if(span.id == "mediaPesos"){
                     span.firstChild!.nodeValue = schoolroom.getEvarageWeights().toFixed(2).toString()
                 }
@@ -121,9 +121,7 @@ const updateStundent = (event:Event) =>{
 const studentClass = new Class("Educação Fisica");
 const updateHtml = loadClassData(studentClass);
 
-studentClass.insertStudent(new Student("Saile Santos da Costa", 23, 1.3, 70))
-studentClass.insertStudent(new Student("Josimar Santos da Costa", 23, 1.3, 70))
-
+studentClass.insertStudent(new Student("Saile Santos da Costa", 23, 1.71, 62))
 
 updateHtml()
 setupButtons();
