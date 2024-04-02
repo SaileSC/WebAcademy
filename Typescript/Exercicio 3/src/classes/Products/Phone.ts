@@ -2,10 +2,10 @@ import { Product } from "./Product";
 
 export class Phone extends Product{
     constructor(
-        model?:string,
-        manufacturer?:string,
-        price?:number,
-        private _memory: number = 0//Restringir a GB
+        model:string,
+        manufacturer:string,
+        price:number,
+        private _memory: number//Restringir a GB
         
     ){
         super(model, manufacturer, price)

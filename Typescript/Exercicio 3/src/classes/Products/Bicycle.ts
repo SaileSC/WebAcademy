@@ -2,10 +2,10 @@ import { Product } from "./Product";
 
 export class Bicycle extends Product{
     constructor(
-        model?:string,
-        manufacturer?:string,
-        price?:number,
-        private _rimSize: number = 0 //Colocar os valores em polegadas.
+        model:string,
+        manufacturer:string,
+        price:number,
+        private _rimSize: number//Colocar os valores em polegadas.
     ){
         super(model, manufacturer, price)
     }

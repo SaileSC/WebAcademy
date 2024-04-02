@@ -2,9 +2,9 @@ export class Product{
     static productId:number = 1;
     private _id: number = Product.productId;
     constructor(
-        private _model: string = "",
-        private _manufacturer: string = "",
-        private _price: number = 0
+        private _model: string,
+        private _manufacturer: string,
+        private _price: number
     ){
         Product.productId += 1;
     }
