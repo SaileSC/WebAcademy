@@ -6,7 +6,7 @@ const toUpper = (str:string):string =>{
 
 
 const listProfs = (profs:prof[]) => {
- const list = profs.map((prof) => `<li>${prof.name} - ${prof.sala}</li>`)
+ const list = profs.map((prof) => `<li>${prof.nome} - ${prof.sala}</li>`)
  return `<ul>${list.join('')}</ul>`;
 }
 

@@ -18,14 +18,19 @@ app.use(express.json());
 app.use(logger("simples"));
 app.use(morgan("combined"));
 
+
+//handlebarns config
 app.engine("handlebars", engine({
     helpers: require(`${__dirname}/views/helpers/helpers.ts`),
-    layoutsDir: `${__dirname}/views/layouts`,
-    defaultLayout: "main"
+    layoutsDir:`${__dirname}/views/layouts`,
+    defaultLayout: "main",
 }));
 
 app.set("view engine", "handlebars");
-app.set("views", `${__dirname}/views`)
+app.set("views", `${__dirname}/views/layouts`)
+
+
+console.log(`${__dirname}/views/layouts/main.hbs`,)
 
 app.use("/html", express.static(`${__dirname}/../public/html`));
 app.use("/css", express.static(`${__dirname}/../public/css`));

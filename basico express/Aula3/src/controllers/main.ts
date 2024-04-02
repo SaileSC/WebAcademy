@@ -19,7 +19,7 @@ const hb2 = (req:Request, res:Response) => {
 }
 
 const hb3 = (req:Request, res:Response) => {
-    res.render("hb3", {
+    res.render("main/hb3", {
         ufs: "UFAM",
         profes:[
             {nome : "David", sala:1238},
@@ -38,7 +38,7 @@ const hb4 = (req:Request, res:Response) => {
         { nome: 'Elaine Harada', sala: 1231 },
         ];
 
-    res.render("/hb4", {
+    res.render("main/hb4", {
         profes,
     });
 }

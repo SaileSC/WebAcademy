@@ -1,4 +1,4 @@
 export interface prof {
-    name:string
+    nome:string
     sala:number
 }
