@@ -1,0 +1,28 @@
+{
+  "produtos": [
+    {
+      "nome": "Celular Sansung Galaxy S25",
+      "preco": "3000",
+      "estoque": "90",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "nome": "Tablet Sansung Galaxy",
+      "preco": 4000,
+      "estoque": 50
+    },
+    {
+      "id": "3",
+      "nome": "Monitor Dell DMD",
+      "preco": 2500,
+      "estoque": 120
+    },
+    {
+      "id": "1f7a",
+      "nome": "Celular Sansung M34",
+      "preco": "1700",
+      "estoque": "12"
+    }
+  ]
+}
