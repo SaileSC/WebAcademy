@@ -8,7 +8,7 @@
         "start": "npx nodemon src/index.ts --watch src",
         "build": "npx tsc",
         "start:prod": "node build/index.js",
-        "start:db" : "npx json-server --watch data/db.json --port 3355"
+        "start:db": "npx json-server --watch data/db.json --port 3355"
     },
     "keywords": [],
     "license": "ISC",
@@ -20,6 +20,7 @@
         "express": "^4.19.1",
         "express-handlebars": "^7.1.2",
         "json-server": "^1.0.0-alpha.23",
+        "lorem-ipsum": "^2.0.8",
         "morgan": "^1.10.0",
         "node-sass-middleware": "^1.1.0",
         "sass": "^1.72.0",

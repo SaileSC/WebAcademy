@@ -5,25 +5,12 @@ import produtoController from "../controllers/produto"
 const router = Router();
 
 router.get("/", mainControler.index)
-
-
-router.get("/bemvindo/:nome", (req, res) =>{
-    const nome = req.params.nome;
-    res.send(`Seja bem-vindo(a) ${nome}`)
-})
-
+router.get("/bemvindo/:nome", mainControler.bemVindo )
 router.get("/hb1", mainControler.hb1);
-
 router.get("/hb2", mainControler.hb2);
-
 router.get("/hb3", mainControler.hb3)
-
 router.get("/hb4", mainControler.hb4)
-
-router.get("/lorem/:paragrafos", (req, res) => {
-    res.send()
-})
-
+router.get("/lorem/:quantidade", mainControler.lorem)
 router.get("/produto", produtoController.index);
 router.get("/produto/create", produtoController.create);
 router.post("/produto/create", produtoController.create);

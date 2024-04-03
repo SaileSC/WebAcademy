@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import envalidEnv from "./utils/envalidEnv";
-//import morgan from "morgan"
+import morgan from "morgan"
 import logger from "./middlewares/logger";
 import router from "./routes/router";
 import { engine } from "express-handlebars";
@@ -15,7 +15,7 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(logger("simples"));
-//app.use(morgan("combined"));
+app.use(morgan("combined"));
 
 
 //handlebarns config

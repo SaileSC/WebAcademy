@@ -1,4 +1,4 @@
-import { prof } from "./helpersTypes";
+import { prof, technologies } from "./helpersTypes";
 
 const toUpper = (str:string):string =>{
     return str.toUpperCase();
@@ -10,4 +10,11 @@ const listProfs = (profs:prof[]) => {
  return `<ul>${list.join('')}</ul>`;
 }
 
-export {toUpper, listProfs};
+const listTechs = (technologies:technologies[]) => {
+    const listNodeJs = technologies.filter(tec => tec.poweredByNodejs == true);
+    const list = listNodeJs.map((tec) => `<li>${tec.name} - ${tec.type}</li>`)
+
+    return `<ul>${list.join('')}</ul>`;
+   }
+
+export {toUpper, listProfs, listTechs};

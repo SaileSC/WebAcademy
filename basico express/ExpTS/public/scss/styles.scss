@@ -1,5 +1,7 @@
 $corIcon : black;
 
+$corTitulo : green;
+
 
 a {
     color:$corIcon;
@@ -7,4 +9,8 @@ a {
 
 th:last-child,td:last-child{
     text-align: end;
+}
+
+h1{
+    color: $corTitulo;
 }
