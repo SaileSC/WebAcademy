@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { LoremIpsum } from "lorem-ipsum";
 
 const index = (req:Request, res: Response) => {
     res.send("Bem-Vindo");
@@ -61,16 +60,10 @@ const bemVindo = (req:Request, res:Response) => {
 
 const lorem = (req:Request, res:Response) => {
     const quantidade:number = parseInt(req.params.quantidade);
-    const lorem = new LoremIpsum();
-    const paragrafos: string[] = []
-
-    for(let x = 1; x <= quantidade ; x++){
-        paragrafos.push(lorem.generateParagraphs(1))
-    }
 
     res.render("main/lorem", {
-        paragrafos,
-        layout:"main2"
+        quantidade,
+        layout:"layoutLorem" //Adição de layout para evitar os navs das outras atividades e deixar ele um pouco mais bonito.
     })
 }
 

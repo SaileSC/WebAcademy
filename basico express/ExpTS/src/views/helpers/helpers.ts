@@ -1,3 +1,4 @@
+import { LoremIpsum } from "lorem-ipsum";
 import { prof, technologies } from "./helpersTypes";
 
 const toUpper = (str:string):string =>{
@@ -15,6 +16,18 @@ const listTechs = (technologies:technologies[]) => {
     const list = listNodeJs.map((tec) => `<li>${tec.name} - ${tec.type}</li>`)
 
     return `<ul>${list.join('')}</ul>`;
-   }
+}
 
-export {toUpper, listProfs, listTechs};
+const gerarLorem = (quantidade:number) => {
+    const lorem = new LoremIpsum();
+    const list:string[] = [];
+
+    for(let x = 1; x <= quantidade ; x++){
+        list.push(`<p>${lorem.generateParagraphs(1)}</p>`)
+    }
+
+    return  `<div>${list.join('')}</div>`;
+}
+
+
+export {toUpper, listProfs, listTechs, gerarLorem};
