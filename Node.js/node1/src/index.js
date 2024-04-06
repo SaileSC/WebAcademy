@@ -19,6 +19,7 @@ function listDirectory(req, res, directoryPath) {
         if (err) {
             res.writeHead(500);
             res.end("Erro ao ler arquivos.");
+            return;
         }
 
         let listarItens = "";
@@ -56,12 +57,15 @@ const server = http.createServer((req, res) => {
         return;
     }
 
+    let pathListagem = "./public" // path da pasta a ser exibida no servidor
+
     //acesso a arquivos da pasta public
-    const requestedPath = path.join("./public", urlPath);
+    const requestedPath = path.join(pathListagem , urlPath);
     fs.stat(requestedPath, (err, stats) => {
         if (err) {
             res.writeHead(404);
-            res.end("Arquivo ou diretório não encontrado.");
+            res.end("Arquivo ou diretorio nao encontrado.");
+            return;
         }
 
         if (stats.isDirectory()) {
