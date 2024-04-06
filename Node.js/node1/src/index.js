@@ -1,55 +1,77 @@
-import http from "http";
-import fs from "fs";
-import dotenv from "dotenv";
-import stringUtil from "./utils/strings.js";
-import creaeLink from "./utils/links.js";
+//uso do commonJS
+const http = require("http");
+const fs = require("fs");
+const path = require("path");
+const dotenv = require("dotenv");
+const createLink = require("./utils/links.js");
 
-//Configura o ambiente como produção ou desenvolvimento;
+
 dotenv.config({
     path: `.env.${process.env.NODE_ENV}`
 });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
-let filesNames = [];
+//Tratar quando for um diretorio
+function listDirectory(req, res, directoryPath) {
+    //uso do readdir para ler o conteudo do diretorio
+    fs.readdir(directoryPath, { withFileTypes: true }, (err, files) => {
+        if (err) {
+            res.writeHead(500);
+            res.end("Erro ao ler arquivos.");
+        }
 
-
-// Ler arquivos da pasta ./public
-fs.readdir("./public", (err, files) => {
-    if (err) {
-        console.log(err);
-    } else {
-        files.forEach((fileName) => {
-            //Adiciona nome de arquivos em filesNames {posicao : nome};
-            filesNames.push(fileName);
+        let listarItens = "";
+        files.forEach((file) => {
+            listarItens += createLink(file.name, file.isDirectory());
         });
 
-        //Cria servidor
-        const server = http.createServer((req, res) => {
-            res.writeHead(200, { "Content-Type": "text/html;charset=utf-8" });
+        res.writeHead(200, { "Content-Type": "text/html;charset=utf-8" });
+        res.end(listarItens);
+    });
+}
 
-            if (req.url == "/") {
-                filesNames.forEach((element) => {
-                    //res.write(creaeLink(element));
-                    res.write(`${element} <br>`);
-                });
-            } else if (req.url.includes("favicon.ico")) {
-                res.end();
-            } else {
-                fs.readFile("./public", (err, data) => {
-                    if (err) throw Error(err)
-                    res.end(data.toString());
-                })
-            }
+//tratar quando for arquivo
+function serveFile(req, res, filePath) {
+    //uso do readFile para ler arquivo
+    fs.readFile(filePath, (err, data) => {
+        if (err) {
+            res.writeHead(500);
+            res.end("Erro ao ler o arquivo.");
+            return;
+        }
 
+        res.writeHead(200);
+        res.end(data);
+    });
+}
 
-            res.end();
-        });
+//criar servidor
+const server = http.createServer((req, res) => {
+    const urlPath = decodeURI(req.url);
 
-
-        //Define porta de acordo com o .env.xxxx.PORT
-        server.listen(PORT, () => {
-            console.log(`Servidor rodando na porta ${PORT}`);
-        });
+    if (urlPath === "/favicon.ico") {
+        res.writeHead(200, { "Content-Type": "image/x-icon" });
+        res.end();
+        return;
     }
+
+    //acesso a arquivos da pasta public
+    const requestedPath = path.join("./public", urlPath);
+    fs.stat(requestedPath, (err, stats) => {
+        if (err) {
+            res.writeHead(404);
+            res.end("Arquivo ou diretório não encontrado.");
+        }
+
+        if (stats.isDirectory()) {
+            listDirectory(req, res, requestedPath);
+        } else {
+            serveFile(req, res, requestedPath);
+        }
+    });
+});
+
+    server.listen(PORT, () => {
+        console.log(`Servidor rodando na porta ${PORT}`);
 });

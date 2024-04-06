@@ -1,5 +1,5 @@
-function creaeLink(fileName) {
-    return `<a href= /${fileName}> ${fileName}</a> <br> \n`;
+function createLink(name, isDir) {
+    const link = isDir ? `${name}/` : name;
+    return `<a href="${link}">${name}</a><br>`;
 }
-
-export default creaeLink;
+module.exports = createLink;
