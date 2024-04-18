@@ -13,6 +13,7 @@ const listProfs = (profs:prof[]) => {
 
 const listTechs = (technologies:technologies[]) => {
     const listNodeJs = technologies.filter(tec => tec.poweredByNodejs == true);
+    
     const list = listNodeJs.map((tec) => `<li>${tec.name} - ${tec.type}</li>`)
 
     return `<ul>${list.join('')}</ul>`;
