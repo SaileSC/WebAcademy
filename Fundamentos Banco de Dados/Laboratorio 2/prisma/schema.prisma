@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Cliente {
+  cpf String @id @db.VarChar(14)
+  nomeCompleto String @db.VarChar(100) @map("nome_completo")
+  email String @db.VarChar(50)
+  celular String @db.VarChar(20)
+
+  enderecos Endereco[]
+  compras Compra[]
+
+  @@map("cliente")
+}
+
+
+model FormaPagamento {
+  codigo Int @id @default(autoincrement())
+
+  pagamentoTipo String @db.VarChar(50) @map("pagamento_tipo")
+  compras Compra[]
+
+  @@map("forma_pagamento")
+}
+
+
+model Endereco {
+  codigo Int @id @default(autoincrement())
+  cep String @db.VarChar(10)
+  cidade String @db.VarChar(50)
+  bairro String @db.VarChar(50)
+  rua String @db.VarChar(50)
+  numero Int @db.Int
+
+  compras Compra[]
+
+  cliente Cliente @relation(fields: [cpfCliente], references: [cpf])
+  cpfCliente String @db.VarChar(14) @map("cpf_cliente")
+  
+  @@map("endereco")
+}
+
+
+model Categoria {
+  codigo Int @id @default(autoincrement())
+  nome String @db.VarChar(50) @unique
+
+  subcategorias SubCategoria[]
+
+  @@map("categoria")
+}
+
+
+model SubCategoria {
+  codigo Int @id @default(autoincrement())
+  nome String @db.VarChar(50) @unique
+
+  produtos Produto[]
+
+  categoria Categoria @relation(fields: [codigoCategoria], references: [codigo])
+  codigoCategoria Int @db.Int @map("codigo_categoria")
+
+  @@map("subcategoria")
+}
+
+model Produto {
+  codigo Int @id @db.Int @default(autoincrement())
+  modelo String @db.VarChar(50)
+  precoBase Decimal @db.Decimal(10,2)
+  qtdDisponivel Int @db.Int
+
+  itensComprados ItemCompra[]
+
+  subcategoria SubCategoria @relation(fields: [codigoSubcategoria], references: [codigo])
+  codigoSubcategoria Int @db.Int @map("codigo_subcategoria")
+
+  codigoSerie NumerosSerie? @relation(fields: [codigoNumerosSerie], references: [codigo])
+  codigoNumerosSerie Int? @db.Int @map("codigo_numeros_serie")
+
+  @@map("produto")
+}
+
+
+model NumerosSerie {
+  codigo Int @id @db.Int @default(autoincrement())
+  numeroSerie String @db.VarChar(50) @unique
+
+  produtos Produto[]
+
+  @@map("numeros_serie")
+}
+
+
+model ItemCompra {
+  codigo Int @id @db.Int @default(autoincrement())
+  quantidade Int @db.Int
+
+  produtos Produto @relation(fields: [codigoProduto], references: [codigo])
+  codigoProduto Int @db.Int @map("codigo_produto")
+
+  compra Compra @relation(fields: [codigoCompra], references: [codigo])
+  codigoCompra Int @db.Int @map("codigo_compra")
+
+  @@map("item_compra")
+}
+
+
+model Compra {
+  codigo Int @id @db.Int @default(autoincrement())
+  dataHoraCompra DateTime @db.DateTime() @map("data_hora_compra")
+  descontoAplicado Decimal @db.Decimal(10,2) @map("desconto_aplicado")
+
+  compras ItemCompra[]
+
+  cliente Cliente @relation(fields: [cpfCliente], references: [cpf])
+  cpfCliente String @db.VarChar(20) @map("cpf_cliente")
+
+  formaPagamento FormaPagamento @relation(fields: [codigoFormaPagamento], references: [codigo])
+  codigoFormaPagamento Int @db.Int @map("codigo_forma_pagamento")
+
+  endereco Endereco @relation(fields: [codigo_enderecos], references: [codigo])
+  codigo_enderecos Int @db.Int @map("codigo_enderecos")
+
+  @@map("compra")
+}
