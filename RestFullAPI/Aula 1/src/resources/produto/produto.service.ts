@@ -20,3 +20,7 @@ export const listProdutos = async():Promise<Produto[]> => {
 export const readProduto = async(id:string):Promise<Produto | null> =>{
     return await prisma.produto.findUnique({where: {id}})
 }
+
+export const deleteProduto = async(id:string): Promise<any> => {
+    return await prisma.produto.delete({where: {id}})
+}

@@ -1,7 +1,7 @@
 import express, {Request, Response} from "express";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 import { CreateProdutoDto } from "./produto.types";
-import { checkNomeIsAvaliable, createProduto, listProdutos, readProduto } from "./produto.service";
+import { checkNomeIsAvaliable, createProduto, deleteProduto, listProdutos, readProduto } from "./produto.service";
 
 const index = async (req:Request, res:Response) => {
     try {
@@ -43,7 +43,13 @@ const update = async (req:Request, res:Response) => {
 }
 
 const remove = async (req:Request, res:Response) => {
-    res.send("remove produto")
+    const { id } = req.params;
+    try{
+        console.log(deleteProduto(id))
+
+    }catch(err){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(ReasonPhrases.INTERNAL_SERVER_ERROR)
+    }
 }
 
 export default {index, create, read, update, remove}
