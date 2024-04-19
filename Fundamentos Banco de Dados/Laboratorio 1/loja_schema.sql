@@ -29,7 +29,7 @@ CREATE TABLE `categoria` (
   `nome` varchar(50) NOT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `nome` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,7 +103,8 @@ DROP TABLE IF EXISTS `forma_pagamento`;
 CREATE TABLE `forma_pagamento` (
   `codigo` int NOT NULL AUTO_INCREMENT,
   `pagamento_tipo` varchar(50) NOT NULL,
-  PRIMARY KEY (`codigo`)
+  PRIMARY KEY (`codigo`),
+  UNIQUE KEY `pagamento_tipo` (`pagamento_tipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -137,7 +138,8 @@ DROP TABLE IF EXISTS `numeros_serie`;
 CREATE TABLE `numeros_serie` (
   `codigo` int NOT NULL AUTO_INCREMENT,
   `numero_serie` varchar(50) NOT NULL,
-  PRIMARY KEY (`codigo`)
+  PRIMARY KEY (`codigo`),
+  UNIQUE KEY `numero_serie` (`numero_serie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -179,7 +181,7 @@ CREATE TABLE `subcategoria` (
   UNIQUE KEY `nome` (`nome`),
   KEY `codigo_categoria` (`codigo_categoria`),
   CONSTRAINT `subcategoria_ibfk_1` FOREIGN KEY (`codigo_categoria`) REFERENCES `categoria` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -191,4 +193,4 @@ CREATE TABLE `subcategoria` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-19 12:32:55
+-- Dump completed on 2024-04-19 13:04:07

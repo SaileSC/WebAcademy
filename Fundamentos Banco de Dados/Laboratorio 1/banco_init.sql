@@ -12,12 +12,12 @@ CREATE TABLE categoria (
 
 CREATE TABLE numeros_serie (
     codigo INTEGER PRIMARY KEY AUTO_INCREMENT,
-    numero_serie VARCHAR(50) NOT NULL
+    numero_serie VARCHAR(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE forma_pagamento (
     codigo INTEGER PRIMARY KEY AUTO_INCREMENT,
-    pagamento_tipo VARCHAR(50) NOT NULL
+    pagamento_tipo VARCHAR(50) UNIQUE NOT NULL
 );
 
 CREATE TABLE subcategoria (
