@@ -31,9 +31,7 @@ export const updateCategoria = async(categoria:UpdateCategoriaDto): Promise<Cate
         where:{
             codigo:categoria.codigo
         },
-        data:{
-            nome:categoria.nome
-        }
+        data:categoria
     })
 }
 

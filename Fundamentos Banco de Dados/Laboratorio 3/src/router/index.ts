@@ -1,13 +1,16 @@
 import { Router } from "express"
-import categoriaController from "../resources/categoria/categoria.controller"
+import RouterCategorias from "../resources/categoria/categoria.routers"
+import RouterSubCategorias from "../resources/subcategoria/subcategoria.routers"
+import routerProdutos from "../resources/produto/produto.routers"
+import routerNumeroSerie from "../resources/numeroSerie/numeroSerie.routers"
 
 const router = Router()
 
-router.get("/categoria", categoriaController.index)
-router.post("/categoria", categoriaController.create)
-router.get("/categoria/:codigo", categoriaController.read)
-router.put("/categoria", categoriaController.update)
-router.delete("/categoria/:codigo", categoriaController.remove)
+router.use("/loja", RouterCategorias)
+router.use("/loja", RouterSubCategorias)
+router.use("/loja", routerProdutos)
+router.use("/loja", routerNumeroSerie)
+
 
 
 
