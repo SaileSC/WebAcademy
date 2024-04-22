@@ -1,0 +1,6 @@
+FROM mysql:latest
+
+ARG MYSQL_DATABASE = "banco"
+ARG MYSQL_ROOT_PASSWORD = "senha123"
+
+EXPOSE 3306

@@ -1,0 +1,16 @@
+version: "1.0"
+
+services:
+  main-db:
+    image: mysql
+    restart: aways
+    container_name: banco_loja
+    environment:
+      MYSQL_DATABASE: "banco"
+      MYSQL_ROOT_PASSWORD: "senha123"
+    ports:
+      - "3306:3306" # porta-externa:porta-container
+    expose:
+      - "3306" # porta-container a ser exposta
+    valumes:
+      - "./data/db:/var/lib/mysql"

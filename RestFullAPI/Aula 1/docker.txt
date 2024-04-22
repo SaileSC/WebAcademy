@@ -1,6 +1,0 @@
-criar container
-docker run --name loja_banco -p 3306:3306 -e MYSQL_DATABASE=loja -e MYSQL_ROOT_PASSWORD=senha123 -d mysql:8.0
-
-
-accesso ao mysql do container 
-mysql -uroot -psenha123 -P3306 -h127.0.0.1 loja
