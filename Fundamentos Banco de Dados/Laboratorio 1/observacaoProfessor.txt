@@ -1,0 +1,2 @@
+Ola Saile, o endereço nao é entidade ... esse tipo de desnormalizacao só acontece no projeto .. no esquema relacional!
+E o serial deveria estar associado aos teus itens de compra.
