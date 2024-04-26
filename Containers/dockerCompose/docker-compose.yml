@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: bdcontainer
+    image: mysql
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass2024
+      - MYSQL_DATABASE=loja_banco
+    networks:
+      - mysql_phpmyadmin
+    volumes:
+      - vol_mysql:/var/lib/mysql
+  phpmyadmin:
+    container_name: bdguicontainer
+    image: phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=bdcontainer
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=pass2023
+    networks:
+      - mysql_phpmyadmin
+    depends_on:
+      - mysql
+networks:
+  mysql_phpmyadmin:
+    driver: bridge
+volumes:
+  vol_mysql:

@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: bdcontainer
+    build: ./.docker/mysql
+    restart: always
+    ports:
+      - 3306:3306
+    env_file:
+      - ./.docker/mysql/.env
+    volumes:
+      - vol_mysql:/var/lib/mysql
+    networks:
+      - rede_bd
+phpmyadmin:
+    container_name: bdguicontainer
+    image: phpmyadmin:latest
+    ports:
+      - 8080:80
+    env_file:
+      ./.docker/phpmyadmin/.env
+    depends_on:
+      - bdcontainer
+    networks:
+      - rede_bd
+networks:
+  rede_bd:
+    driver: bridge
+
+volumes:
+  vol_mysql:
