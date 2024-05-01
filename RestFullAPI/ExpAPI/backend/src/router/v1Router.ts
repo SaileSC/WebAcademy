@@ -1,24 +1,28 @@
 import {Router} from "express";
-import produtoRouter from "../resources/produto/produto.router"
-import languageRouter from "../resources/language/language.router"
-import usuarioRuter from "../resources/usuario/usuario.router"
-import authRouter from "../resources/auth/auth.routers"
-const router = Router()
+
+import produtoRouter from "../resources/produto/produto.router";
+import languageRouter from "../resources/language/language.router";
+import usuarioRuter from "../resources/usuario/usuario.router";
+import authRouter from "../resources/auth/auth.routers";
+
+const router = Router();
 
 
 
 router.use("/produto"
 //#swagger.tags = ["Produto"]
-, produtoRouter)
+, produtoRouter);
 
-router.use("/language",
+router.use("/language"
 //#swagger.tags = ["Language"]
-languageRouter)
+,languageRouter);
 
-router.use("/usuario", usuarioRuter)
+router.use("/usuario"
+//#swagger.tags = ["Usuario"]
+, usuarioRuter);
 
 router.use("/auth",
 //#swagger.tags = ["Auth"]
-authRouter)
+authRouter);
 
 export default router;

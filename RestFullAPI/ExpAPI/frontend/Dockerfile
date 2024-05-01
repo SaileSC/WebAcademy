@@ -10,4 +10,6 @@ COPY . .
 
 EXPOSE 4477
 
+RUN npm install
+
 CMD [ "npm", "start" ]
