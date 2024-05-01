@@ -5,27 +5,27 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
 }
-
 
 model Usuario {
   id        String   @id @default(uuid()) @db.Char(36)
   nome      String   @db.VarChar(100)
+  senha     String   @db.Char(50)
   email     String   @unique @db.VarChar(100)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  tipoUsuario TipoUsuario @relation(fields: [tipoUsuarioid], references: [id])
-  tipoUsuarioid String @db.Char(36)
+  tipoUsuario   TipoUsuario @relation(fields: [tipoUsuarioid], references: [id])
+  tipoUsuarioid String      @db.Char(36)
 
   @@map("usuarios")
 }
 
 model TipoUsuario {
-  id        String   @id @default(uuid()) @db.Char(36)
-  rotulo      String   @db.Char(8)
+  id     String @id @default(uuid()) @db.Char(36)
+  rotulo String @db.Char(8)
 
   usuario Usuario[]
 
@@ -35,10 +35,11 @@ model TipoUsuario {
 model Produto {
   id        String   @id @default(uuid()) @db.Char(36)
   nome      String   @unique @db.VarChar(100)
-  preco     Decimal  @db.Decimal(10,2)
+  preco     Decimal  @db.Decimal(10, 2)
   estoque   Int      @db.Int()
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
   @@map("produtos")
 }
 

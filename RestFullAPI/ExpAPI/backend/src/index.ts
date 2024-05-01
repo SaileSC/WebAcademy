@@ -8,6 +8,12 @@ import {v4 as uuidv4} from "uuid";
 import session from "express-session";
 
 
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "./swagger-output.json";
+
+
+
+
 dotenv.config();
 validateEnv();
 
@@ -23,9 +29,18 @@ app.use(session({
     saveUninitialized: true
 }))
 
+declare module "express-session" {
+    interface SessionData {
+        uid:string,
+        tipoUsuarioid:string
+    }
+}
+
 app.use(setCookieLang);
 app.use(express.json());
 
+
+app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.get("/createby", (req:Request, res:Response) => {
     res.send("Saile Santos da Costa")
 })
