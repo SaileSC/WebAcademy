@@ -13,14 +13,17 @@ export const checkCredentials = async (credentials : loginDto): Promise<UsuarioD
         if (!usuario) return null;
         const ok = await compare(credentials.senha, usuario.senha)
         if (!ok) return null;
-        
 
-        return {
-            id: usuario.id,
-            nome: usuario.email,
-            email: usuario.email,
-            tipoUsuarioid:usuario.tipoUsuarioid,
-            createdAt: usuario.createdAt,
-            updatedAt: usuario.updatedAt
-       }
+        const { senha, ...usuarioAuth } = usuario;
+        return usuarioAuth;
+
+    //     return {
+    //         id: usuario.id,
+    //         nome: usuario.email,
+    //         email: usuario.email,
+    //         tipoUsuarioid:usuario.tipoUsuarioid,
+    //         createdAt: usuario.createdAt,
+    //         updatedAt: usuario.updatedAt
+    //    }
+
 }

@@ -16,6 +16,16 @@ const index = async (req:Request, res:Response) => {
 }
 
 const create = async (req:Request, res:Response) => {
+    /*
+        #swagger.summary = 'Adiciona um novo produto na base.'
+        #swagger.parameters['body'] = {
+        in: 'body',
+        schema: { $ref: '#/definitions/CreateProduto' }
+        }
+        #swagger.responses[200] = {
+        schema: { $ref: '#/definitions/Produto' }
+        }
+    */
     const produto = req.body as CreateProdutoDto;
 
     try {
@@ -31,14 +41,21 @@ const create = async (req:Request, res:Response) => {
 }
 
 const read = async (req:Request, res:Response) => {
-        const { id } = req.params;
-        try{
-            const produto = await readProduto(id);
-            if(!produto) return res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND);
-            res.status(StatusCodes.OK).json(produto);
-        }catch(err){
-            res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
-        }
+/*
+    #swagger.summary = 'Recupera dados de um produto específico.'
+    #swagger.parameters['id'] = { description: 'ID do produto' }
+    #swagger.responses[200] = {
+    schema: { $ref: '#/definitions/Produto' }
+    }
+*/
+    const { id } = req.params;
+    try{
+        const produto = await readProduto(id);
+        if(!produto) return res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND);
+        res.status(StatusCodes.OK).json(produto);
+    }catch(err){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+    }
 }
 
 const update = async (req:Request, res:Response) => {

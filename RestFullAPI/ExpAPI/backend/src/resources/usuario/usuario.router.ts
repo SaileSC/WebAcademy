@@ -7,9 +7,8 @@ const router = Router();
 
 router.get("/", usuarioController.index);
 router.post("/", validadeBody(createUsuarioScreema), usuarioController.create);
-router.get("/", usuarioController.index);
-router.get("/", usuarioController.index);
-router.get("/", usuarioController.index);
-router.get("/", usuarioController.index);
+router.get("/:id", usuarioController.read);
+router.put("/:id", validadeBody(createUsuarioScreema), usuarioController.update);
+router.delete("/:id", usuarioController.remove);
 
 export default router;

@@ -3,6 +3,7 @@ import { CreateProdutoDto, UpdateProdutoDto } from "./produto.types";
 
 const prisma = new PrismaClient();
 
+
 export const checkNomeIsAvaliable = async (nome:string, ignoreId?:string):Promise<Boolean> => {
    const produto = await prisma.produto.findUnique({
         where:{nome}

@@ -39,24 +39,23 @@
         "tags": [
           "Produto"
         ],
+        "summary": "Adiciona um novo produto na base.",
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/CreateProduto"
             }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Produto"
+            },
+            "description": "OK"
           }
         }
       }
@@ -66,18 +65,23 @@
         "tags": [
           "Produto"
         ],
+        "summary": "Recupera dados de um produto específico.",
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID do produto"
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Produto"
+            },
+            "description": "OK"
           }
         }
       },
@@ -169,6 +173,77 @@
             "name": "tipoUsuario",
             "in": "query",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/v1/usuario/{id}": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Usuario"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Usuario"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -214,6 +289,88 @@
           "default": {
             "description": ""
           }
+        }
+      }
+    },
+    "/v1/compra/{id}": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/v1/compra/": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreateProduto": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "Martelo"
+        },
+        "preco": {
+          "type": "number",
+          "example": 29
+        },
+        "estoque": {
+          "type": "number",
+          "example": 10
+        }
+      }
+    },
+    "Produto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "8a2053de-5d92-4c43-97c0-c9b2b0d56703"
+        },
+        "nome": {
+          "type": "string",
+          "example": "Bacon"
+        },
+        "preco": {
+          "type": "number",
+          "example": 261
+        },
+        "estoque": {
+          "type": "number",
+          "example": 1
+        },
+        "createdAt": {
+          "type": "string",
+          "example": "2023-11-07T19:27:15.645Z"
+        },
+        "updatedAt": {
+          "type": "string",
+          "example": "2023-11-07T19:27:15.645Z"
         }
       }
     }
