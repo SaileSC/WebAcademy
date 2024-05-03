@@ -4,10 +4,9 @@ import produtoRouter from "../resources/produto/produto.router";
 import languageRouter from "../resources/language/language.router";
 import usuarioRuter from "../resources/usuario/usuario.router";
 import authRouter from "../resources/auth/auth.routers";
+import compraRouter from "../resources/compra/compra.router"
 
 const router = Router();
-
-
 
 router.use("/produto"
 //#swagger.tags = ["Produto"]
@@ -15,14 +14,18 @@ router.use("/produto"
 
 router.use("/language"
 //#swagger.tags = ["Language"]
-,languageRouter);
+, languageRouter);
 
 router.use("/usuario"
 //#swagger.tags = ["Usuario"]
 , usuarioRuter);
 
-router.use("/auth",
+router.use("/auth"
 //#swagger.tags = ["Auth"]
-authRouter);
+, authRouter);
+
+router.use("/compra"
+//#swagger.tags = ["Auth"]
+, compraRouter);
 
 export default router;

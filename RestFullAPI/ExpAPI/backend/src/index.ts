@@ -32,7 +32,8 @@ app.use(session({
 declare module "express-session" {
     interface SessionData {
         uid:string,
-        tipoUsuarioid:string
+        tipoUsuarioid:string,
+        carrinhoCompras:string[]
     }
 }
 

@@ -2,7 +2,7 @@ import Joi from "joi";
 
 // Alternativa {Usar o Zod : voltado para typescript}
 export const produtoScheme = Joi.object().keys({
-    nome: Joi.string().min(3).allow("oi").max(50).required().lowercase(),
+    nome: Joi.string().min(3).allow("teste").max(50).required().lowercase(),
     preco: Joi.number().positive().required(),
     //estoque: Joi.custom((value) => value == 0 ? 0 : 1),
     estoque: Joi.number().positive().integer().required(),

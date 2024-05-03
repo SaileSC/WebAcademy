@@ -1,9 +1,16 @@
 import { Request, Response } from "express"
 import { StatusCodes } from "http-status-codes";
-import { createUsuario } from "./usuario.service";
+import { createUsuario, listUsuarios } from "./usuario.service";
 import { TipoUsuario } from "./usuario.types";
 
-const index = async(req:Request, res: Response) => {}
+const index = async(req:Request, res: Response) => {
+    try{
+        const allUsuarios = listUsuarios();
+        res.status(StatusCodes.OK).json(allUsuarios)
+    }catch(err){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err)
+    }
+}
 
 const create = async(req:Request, res: Response) => {
     const usuario = req.body;
