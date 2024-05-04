@@ -1,5 +1,6 @@
 import Image
 from "next/image"
+import BotaoAdicionarProduto from "./btn-produtoCarrinho";
 
 const CardProdutos = (
     nome:string,
@@ -19,9 +20,7 @@ const CardProdutos = (
                 <div className="card-body bg-light">
                 <h5 className="card-title">{nome}</h5>
                 <p className="card-text text-secondary">R$ {valor}</p>
-                <button className="btn btn-dark d-block w-100" type="button">
-                    Adicionar no carrinho
-                </button>
+                    <BotaoAdicionarProduto/>
                 </div>
             </div>
         </div>

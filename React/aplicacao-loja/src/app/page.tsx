@@ -9,9 +9,8 @@ export default function Produtos() {
     <main>
         <div className="container p-5">
         <ResumoCarrinho/>
-        <h5 className="mb-3">Produtos disponíveis:</h5>
+        
         <ListagemProdutos/>
-
         </div>
     </main>
   );

@@ -1,3 +1,5 @@
+import BotaoCancelar from "./btn-cancelar";
+
 const ItemCarrinho = (
     nome:string,
     precoUnitario:number, 
@@ -16,9 +18,7 @@ const ItemCarrinho = (
 
             <td>R$ {valorTotalProduto(precoUnitario, quantidade).toFixed(2)}</td>
             <td>
-            <button className="btn btn-danger btn-sm">
-                Remover
-            </button>
+                <BotaoCancelar/>
             </td>
         </tr>
     );
