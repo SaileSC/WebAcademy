@@ -1,6 +1,7 @@
+"use client"
 import React from "react";
 
-const BotaoAdicionarProduto = () => {
+const BtnAdicionaProduto = () => {
     return(
         <button className="btn btn-dark d-block w-100" type="button">
             Adicionar no carrinho
@@ -8,4 +9,4 @@ const BotaoAdicionarProduto = () => {
     );
 }
 
-export default BotaoAdicionarProduto
+export default BtnAdicionaProduto

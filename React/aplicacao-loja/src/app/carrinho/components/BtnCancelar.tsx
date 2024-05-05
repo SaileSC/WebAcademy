@@ -1,6 +1,6 @@
 import React from "react";
 
-const BotaoCancelar = () => {
+const BtnCancelar = () => {
     return (
         <button className="btn btn-danger btn-sm">
             Remover
@@ -8,4 +8,4 @@ const BotaoCancelar = () => {
     );
 }
 
-export default BotaoCancelar;
+export default BtnCancelar;

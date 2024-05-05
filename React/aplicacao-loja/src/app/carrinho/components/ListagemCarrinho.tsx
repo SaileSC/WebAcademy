@@ -1,9 +1,16 @@
 "use client"
 import { ResumoCarrinho } from "@/app/components/ResumoCarrinho";
 import React from "react";
-import ItemCarrinho from "./ItemCarrinho";
+import ItemCarrinhoRow from "./ItemCarrinhoRow";
+import { ItemCarrinho } from "@/app/types/ItemCarrinho";
 
-export const ListagemCarrinho = () => {
+interface ListaItensProp {
+  itens:ItemCarrinho[]
+}
+
+export const ListagemCarrinho = (
+  {itens}:ListaItensProp
+) => {
     return(
         <main>
         <div className="container p-5">
@@ -24,17 +31,16 @@ export const ListagemCarrinho = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {ItemCarrinho("Notebock",1500,2)}
-                    {ItemCarrinho("Notebock",1500,2)}
-                    {ItemCarrinho("Notebock",1500,2)}
-                    {ItemCarrinho("Notebock",1500,2)}
+                    {itens.map((item) => (
+                      <ItemCarrinhoRow key={item.id} item={item}/>
+                    ))}
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
 
-          <ResumoCarrinho/>
+          <ResumoCarrinho listaItens={itens}/>
         </div>
       </main>
     );
