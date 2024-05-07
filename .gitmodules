@@ -7,3 +7,6 @@
 [submodule "WebAcademy---Bootstrap"]
 	path = WebAcademy---Bootstrap
 	url = https://github.com/SaileSC/WebAcademy---Bootstrap.git
+[submodule "WebAcademy-React"]
+	path = WebAcademy-React
+	url = git@github.com:SaileSC/WebAcademy-React.git
